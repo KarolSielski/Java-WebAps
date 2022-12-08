@@ -50,6 +50,16 @@ public class CarService {
         List<Rental> rentalList = rentalStorage.getRentalList();
         List<Car> carList = carStorage.getCarList();
 
+        if (startDate.isAfter(endDate)){
+            System.out.println("Start date cannot be after end Date");
+            return null;
+        }
+
+        if (vin == null){
+            System.out.println("Vin number cannot be null");
+            return null;
+        }
+
         for (Rental rental : rentalList) {
             if (!(rental.getCar().getVin().equals(vin))) {
                 for (Car car : carList) {
