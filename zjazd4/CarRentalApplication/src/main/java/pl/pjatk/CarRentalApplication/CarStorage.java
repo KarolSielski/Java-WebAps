@@ -21,4 +21,13 @@ public class CarStorage {
         carList.add(new Car("Renault", "Megane", "rena12345", CarSegment.STANDARD));
         carList.add(new Car("Renault", "Clio III", "arenaa23", CarSegment.CITY));
     }
+
+    public Car findByVin(String vin){
+        for (Car car: carList){
+            if (car.getVin().equals(vin)){
+                return car;
+            }
+        }
+        return null;
+    }
 }
