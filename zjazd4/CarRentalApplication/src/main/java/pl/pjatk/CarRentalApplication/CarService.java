@@ -25,26 +25,6 @@ public class CarService {
         return rentalStorage.getRentalList();
     }
 
-//    public RentalInfo rentACar(String vin) {
-//        List<Rental> rentalList = rentalStorage.getRentalList();
-//        for (Car car : carStorage.getCarList()) {
-//            if (vin.equals(car.getVin())) {
-//                for (Rental rental : rentalList) {
-//                    if (rental.getCar().getVin().equals(car.getVin())) {
-//                        System.out.println("This car is already rented");
-//                        return null;
-//                    } else {
-//                        System.out.println("Car with vin: " + vin + " successfully add");
-//                        rentalStorage.getRentalList().add(new Rental(new User("userTemplate"), car));
-//                        return new RentalInfo(1.0, LocalDate.now(), LocalDate.now());
-//                    }
-//                }
-//            }
-//        }
-//        System.out.println("We don't have that type of car");
-//        return null;
-//    }
-
     public RentalInfo rentACar(String vin, LocalDate startDate, LocalDate endDate) {
 
         List<Rental> rentalList = rentalStorage.getRentalList();
@@ -68,6 +48,8 @@ public class CarService {
                         rentalList.add(new Rental(new User("dummyUser"), car));
                         int between = (int) ChronoUnit.DAYS.between(startDate, endDate);
                         return new RentalInfo(300.00 * between * car.getCarSegment().getNumVal(), startDate, endDate);
+                    } else {
+                        return null;
                     }
                 }
             } else {
